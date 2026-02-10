@@ -1,0 +1,20 @@
+name: Github actions demo workflow
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: show system info
+        run: uname -a
+
+      - name: Install Dependencies
+        run: echo "Installing dependencies"
+
+      - name: Build Project
+        run: echo "Build compelete"
