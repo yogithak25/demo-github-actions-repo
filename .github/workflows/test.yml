@@ -4,8 +4,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello from Job1"
+      - run: echo Hello from Job1
   job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello from job2"
