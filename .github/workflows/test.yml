@@ -1,0 +1,11 @@
+name: test workkflow
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello from Job1"
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello from job2"
