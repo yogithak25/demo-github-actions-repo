@@ -12,3 +12,8 @@ jobs:
         with:
           name: my-output
           path: output.txt
+
+      - name: Download file
+        uses: actions/dodwnload-artifact@v4
+        with:
+          name: my-output
