@@ -1,0 +1,14 @@
+name: Upload single file
+on: workflow_dispatch
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: create file
+        run: echo "Hello from Github" > output.txt
+
+      - name: Upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-output
+          path: output.txt
