@@ -4,6 +4,9 @@ jobs:
   multi:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Multiple commands in one step
         run: |
           echo "This is sample line"
