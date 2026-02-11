@@ -1,0 +1,13 @@
+name: Multiple commands in one step
+on: workflow_dispatch
+jobs:
+  multi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Multiple commands in one step
+        run: |
+          echo "This is sample line"
+          ls -l
+          cat sample.txt
+          pwd
+          df -h
