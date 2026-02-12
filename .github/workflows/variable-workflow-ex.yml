@@ -1,0 +1,17 @@
+name: Workflow Level Env Example
+on: workflow_dispatch
+env:
+  ENV: prod
+  APP: web-app
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step in job1
+        run: echo "Envirnment is $ENV"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step in job2
+        run: echo "Aplication is $APP"
