@@ -1,0 +1,8 @@
+name: Context Example
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Branch is ${{ github.ref }}"
+      - run: echo "Runner OS is ${{ runner.os }}"
