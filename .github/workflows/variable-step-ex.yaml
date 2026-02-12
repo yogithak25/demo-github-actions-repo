@@ -1,0 +1,15 @@
+name: Step level env example
+on: workflow_dispatch
+jobs:
+  demo:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Step level env variables
+        env:
+          ENVIRONMENT: dev
+          APP: web-app
+        run: |
+          echo "Environment is $ENVIRONMENT"
+          echo "Application is $APP"
+      - name: Next step
+        run: echo "Environment is $ENVIRONMENT and Application is $APP"
