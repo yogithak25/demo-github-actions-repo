@@ -1,0 +1,23 @@
+name: Full Env Levels Example
+on: workflow_dispatch
+env:
+  WF_VAR: WorkflowValue
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VAR: JobValue
+    steps:
+      - name: Step one with step env
+        env:
+          STEP_VAR: StepValue
+        run: |
+          echo "Workflow variable: $WF_VAR"
+          echo "Job variable: $JOB_VAR"
+          echo "Step variable: $STEP_VAR"
+
+      - name: Step two without step env
+        run: |
+          echo "Workflow variable: $WF_VAR"
+          echo "Job variable: $JOB_VAR"
+          echo "Step variable: $STEP_VAR"
