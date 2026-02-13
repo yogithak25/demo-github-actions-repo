@@ -1,0 +1,20 @@
+name: Matrix with include
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest]
+        node: [16,18]
+        include:
+          - os: [ubuntu-latest]
+            node: 18
+            message: optimized-build
+    steps:
+      - name: Show values
+        run: |
+          echo "OS ${{ matrix.os }}"
+          echo "Node ${{ matrix.node }}"
+          echo "Message ${{ matrix.message }}"
+    
