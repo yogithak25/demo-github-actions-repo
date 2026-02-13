@@ -2,10 +2,10 @@ name: Docker Matrix
 on: workflow_dispatch
 jobs:
   deploy:
-    runs-on: ${{ matrix.os }}
+    runs-on: ub
     strategy:
       matrix:
-        os: [ubuntu-latest, ubuntu-20.04, windows-latest]
+        os: [ubuntu-latest, ubuntu-24.04, windows-latest]
         images: [hello-world, alpine]
     steps:
       - name: Docker details
