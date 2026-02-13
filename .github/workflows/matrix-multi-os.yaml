@@ -1,0 +1,12 @@
+name: Multi OS
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-lates,windows-latest,macos-latest]
+    steps:
+      - name: Show values
+        run:
+          echo "Testing on ${{ matrix.os }}"
