@@ -1,0 +1,19 @@
+name: Deployment pipeline
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Building application"
+  test:
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - run: echo "Running tests"
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: test
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - run: echo "Deploying to production"
+      
