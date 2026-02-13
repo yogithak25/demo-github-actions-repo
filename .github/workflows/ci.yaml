@@ -1,0 +1,51 @@
+name: CICD pipeline
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Install maven
+        run: |
+          sudo apt update
+          sudo apt install -y maven
+
+      - name: Build with maven
+        run: mvn -B clean package
+  sonarqube:
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - name: Sonarqube analysis
+        run: mvn sonar:sonar
+
+  security-check:
+    runs-on: ubuntu-24.04
+    needs: sonarqube
+    steps:
+      - name: Install Trivy
+        run: |
+          wget https://github.com/aquasecurity/trivy/releases/download/v0.67.2/trivy_0.67.2_Linux-64bit.deb
+          sudo dpkg -i trivy_0.67.2_Linux-64bit.deb
+      - name: Trivy FS scan
+        run:  trivy fs --format table -o fs-report.json
+
+  docker-build:
+    runs-on: ubuntu-24.04
+    needs: security-check
+    steps:
+      - name: Build Docker image
+        run: docker build -t demo-image:v1 .
+        
+          
+  
+          
+        
