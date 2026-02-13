@@ -12,5 +12,5 @@ jobs:
             node: 18
     steps:
       - run: 
-          echo "$matrix.os $matrix.node"
+          echo "${{ matrix.os }} and ${{ matrix.node }}"
           
