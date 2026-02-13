@@ -1,0 +1,13 @@
+name: Python versions
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python: [3.10,3.11,3.12]
+    steps:
+      - name: Show python versions
+        run: 
+          echo "Testing on Python ${{ matrix.python }}"
+      
