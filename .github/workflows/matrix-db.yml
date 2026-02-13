@@ -1,0 +1,15 @@
+name: DB matrix
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        db: [mysql:8, postgres:12]
+    services:
+      db:
+        image: ${{ matrix.db }}
+        ports:
+          - 5432:5432
+    steps:
+      - run: echo "Testing DB ${{ matrix.db }}"
