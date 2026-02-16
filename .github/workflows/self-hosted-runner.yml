@@ -17,4 +17,4 @@ jobs:
         run: df -h
 
       - name: Check instance IP details
-        run: ip adddr show
+        run: ip addr show
