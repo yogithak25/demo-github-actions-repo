@@ -1,0 +1,17 @@
+name: test self-hosted runner
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: list files
+        run: ls -l
+
+      - name: display Content of a file
+        run: cat sample.txt
+
+      - name: Display content
+        run: cat config.sh
