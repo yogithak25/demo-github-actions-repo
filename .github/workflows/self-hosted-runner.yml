@@ -13,5 +13,5 @@ jobs:
       - name: display Content of a file
         run: cat sample.txt
 
-      - name: Display content
-        run: cat config.sh
+      - name: Check disk usage details
+        run: df -h
